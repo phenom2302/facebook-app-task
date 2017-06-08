@@ -2,31 +2,11 @@
 
 namespace App;
 
-use Illuminate\Auth\Authenticatable;
-use Laravel\Lumen\Auth\Authorizable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+/**
+ * Class User.
+ */
+class User extends AbstractUser
 {
-    use Authenticatable, Authorizable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email',
-    ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
+    /** @const User access token session name. */
+    const USER_ACCESS_TOKEN_SESSION_NAME = 'user_access_token';
 }

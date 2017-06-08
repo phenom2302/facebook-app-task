@@ -1,16 +1,13 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
-|
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
+$app->get('/', ['as'=>'homepage','uses'=>'HomeController@index']);
+$app->get('/login', ['as'=>'login','uses'=>'AuthController@login']);
+$app->get('/login-callback', ['as'=>'login-callback','uses'=>'AuthController@loginCallback']);
+$app->get('/profile', ['as'=>'profile','uses'=>'AuthController@profile']);
+$app->get('/logout', ['as'=>'logout','uses'=>'AuthController@logout']);
+$app->get('/deauthorize-callback', ['as'=>'deauthorize-callback','uses'=>'AuthController@deauthorizeCallback']);
